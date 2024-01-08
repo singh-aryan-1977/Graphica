@@ -7,4 +7,7 @@ include_directories(.)
 
 add_executable(Graphica
         main.cpp
-        main.h)
+        Header_Files/vec3.h
+        Header_Files/color.h
+        Header_Files/ray.h
+)

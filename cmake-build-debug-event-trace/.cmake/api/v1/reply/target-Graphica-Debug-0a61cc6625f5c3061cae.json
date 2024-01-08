@@ -103,7 +103,9 @@
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				1
+				1,
+				2,
+				3
 			]
 		}
 	],
@@ -117,7 +119,17 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "main.h",
+			"path" : "Header_Files/vec3.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Header_Files/color.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Header_Files/ray.h",
 			"sourceGroupIndex" : 1
 		}
 	],
