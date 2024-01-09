@@ -4,27 +4,23 @@
 
 #include "Header_Files/color.h"
 #include "Header_Files/vec3.h"
+#include "Header_Files/math.h"
+#include "Header_Files/sphere.h"
+#include "Header_Files/entity.h"
+#include "Header_Files/entity_list.h"
 #include "Header_Files/ray.h"
 #include <iostream>
 
 using namespace std;
 
-bool hit_sphere(const point3& center, double radius, const ray& r){
-    vec3 dist = r.origin()-center;
-    auto a = dot(r.direction(), r.direction());
-    auto b = 2.0 * dot(dist, r.direction());
-    auto c = dot(dist, dist) - (radius*radius);
-    auto d = (b*b)-(4*a*c);
-    return (d >= 0);
-}
-
-color ray_color(const ray& r) {
-    if (hit_sphere(point3(0,0,-1),0.5, r)){
-        return color(1,0,0);
+color ray_color(const ray& r, const entity& world) {
+    entity_record record;
+    if (world.hit(r, 0, inf, record)) {
+        return 0.5 * (record.normal + color(1,1,1));
     }
     vec3 unit_dir = unit_vector(r.direction());
-    auto a = 0.5 * (unit_dir.y()+1.0);
-    return (1.0-a)*color(1.0,1.0,1.0) + a*color(0.5,0.7,1.0);
+    auto a = 0.5*(unit_dir.y()+1.0);
+    return (1.0-a)*color(1.0, 1.0, 1.0) + a*color(0.5,0.7,1.0);
 }
 
 int main() {
@@ -33,6 +29,11 @@ int main() {
     int IMAGE_WIDTH = 400;
     int IMAGE_HEIGHT = static_cast<int>(IMAGE_WIDTH/aspect_ratio);
     IMAGE_HEIGHT = (IMAGE_HEIGHT < 1) ? 1 : IMAGE_HEIGHT;
+
+    // World building
+    entity_list world;
+    world.add(make_shared<sphere>(point3(0,0,-1),0.5));
+    world.add(make_shared<sphere>(point3(0,-100.5,-1),100));
 
 
     // setting camera and viewport dimensions
@@ -62,7 +63,7 @@ int main() {
             auto pixel_center = pixel_0_loc + (j * pixel_delta_u) + (i * pixel_delta_v);
             auto ray_direction = pixel_center - camera_center;
             ray r(camera_center, ray_direction);
-            color pixel_color = ray_color(r);
+            color pixel_color = ray_color(r, world);
             write_color(std::cout, pixel_color);
         }
     }

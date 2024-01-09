@@ -49,12 +49,12 @@ cmake_ninja_workdir = /Users/aryan_singh/Desktop/Personal$ Projects/Graphica/cma
 
 build cmake_object_order_depends_target_Graphica: phony || CMakeFiles/Graphica.dir
 
-build CMakeFiles/Graphica.dir/main.cpp.o: CXX_COMPILER__Graphica_unscanned_Debug /Users/aryan_singh/Desktop/Personal$ Projects/Graphica/main.cpp || cmake_object_order_depends_target_Graphica
-  DEP_FILE = CMakeFiles/Graphica.dir/main.cpp.o.d
+build CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: CXX_COMPILER__Graphica_unscanned_Debug /Users/aryan_singh/Desktop/Personal$ Projects/Graphica/Main_Classes/main.cpp || cmake_object_order_depends_target_Graphica
+  DEP_FILE = CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o.d
   FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
   INCLUDES = -I"/Users/aryan_singh/Desktop/Personal Projects/Graphica/."
   OBJECT_DIR = CMakeFiles/Graphica.dir
-  OBJECT_FILE_DIR = CMakeFiles/Graphica.dir
+  OBJECT_FILE_DIR = CMakeFiles/Graphica.dir/Main_Classes
 
 
 # =============================================================================
@@ -64,7 +64,7 @@ build CMakeFiles/Graphica.dir/main.cpp.o: CXX_COMPILER__Graphica_unscanned_Debug
 #############################################
 # Link the executable Graphica
 
-build Graphica: CXX_EXECUTABLE_LINKER__Graphica_Debug CMakeFiles/Graphica.dir/main.cpp.o
+build Graphica: CXX_EXECUTABLE_LINKER__Graphica_Debug CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk
   OBJECT_DIR = CMakeFiles/Graphica.dir
   POST_BUILD = :
