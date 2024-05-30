@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Graphica::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Graphica-Debug-388638816a292ba5022c.json",
+					"jsonFile" : "target-Graphica-Debug-be0f9c26b7916c8693c6.json",
 					"name" : "Graphica",
 					"projectIndex" : 0
 				}
@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/aryan_singh/Desktop/Personal Projects/Graphica/cmake-build-debug",
+		"build" : "/Users/aryan_singh/Desktop/Personal Projects/Graphica/cmake-build-debug-event-trace",
 		"source" : "/Users/aryan_singh/Desktop/Personal Projects/Graphica"
 	},
 	"version" : 

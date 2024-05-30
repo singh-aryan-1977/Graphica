@@ -13,5 +13,7 @@ add_executable(Graphica
         Header_Files/entity.h
         Header_Files/sphere.h
         Header_Files/entity_list.h
-        Header_Files/math.h
+        Header_Files/constants.h
+        Header_Files/interval.h
+        Header_Files/camera.h
 )

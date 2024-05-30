@@ -10,7 +10,7 @@ class sphere: public entity {
 public:
     sphere(point3 _center, double _radius): center(_center), radius(_radius) {}
 
-    bool hit(const ray& r, double ray_tmin, double ray_tmax, entity_record& rec) const override{
+    bool hit(const ray& r, interval ray_t, entity_record& rec) const override{
         vec3 dist = r.origin()-center;
         auto a = r.direction().length_squared();
         auto half_b = dot(dist, r.direction());
@@ -22,9 +22,9 @@ public:
         auto root = (-half_b-sqrt(d)) / a;
 
         // finding nearest root in range of ray_tmin to ray_tmax
-        if (root <= ray_tmin || root >= ray_tmax) {
+        if (root <= ray_t.min || root >= ray_t.max) {
             root = (-half_b+sqrt(d)) / a;
-            if (root <= ray_tmin || root >= ray_tmax) {
+            if (root <= ray_t.min || root >= ray_t.max) {
                 return false;
             }
         }

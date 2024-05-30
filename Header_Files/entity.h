@@ -5,6 +5,7 @@
 #ifndef GRAPHICA_ENTITY_H
 #define GRAPHICA_ENTITY_H
 #include "ray.h"
+#include "interval.h"
 
 class entity_record {
 public:
@@ -23,7 +24,7 @@ public:
 class entity {
 public:
     virtual ~entity() = default;
-    virtual bool hit(const ray& r, double ray_tmin, double ray_tmax, entity_record& rec) const=0;
+    virtual bool hit(const ray& r, interval ray_t, entity_record& rec) const=0;
 };
 
 #endif //GRAPHICA_ENTITY_H

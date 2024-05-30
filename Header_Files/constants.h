@@ -2,10 +2,11 @@
 // Created by Aryan Singh on 1/9/24.
 //
 
-#ifndef GRAPHICA_MATH_H
-#define GRAPHICA_MATH_H
+#ifndef GRAPHICA_CONSTANTS_H
+#define GRAPHICA_CONSTANTS_H
 #include "ray.h"
 #include "vec3.h"
+//#include "interval.h"
 #include <cmath>
 #include <limits>
 #include <memory>
@@ -24,4 +25,4 @@ inline double deg_to_rad(double deg) {
 
 
 
-#endif //GRAPHICA_MATH_H
+#endif //GRAPHICA_CONSTANTS_H
