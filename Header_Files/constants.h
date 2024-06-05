@@ -4,12 +4,12 @@
 
 #ifndef GRAPHICA_CONSTANTS_H
 #define GRAPHICA_CONSTANTS_H
-#include "ray.h"
-#include "vec3.h"
+
 //#include "interval.h"
 #include <cmath>
 #include <limits>
 #include <memory>
+#include <random>
 
 
 using namespace std;
@@ -23,6 +23,32 @@ inline double deg_to_rad(double deg) {
     return (deg * pi) / 180.0;
 }
 
+//inline double random_double() {
+//    return rand() / (RAND_MAX + 1.0);
+//}
+//
+//inline double random_double(double min, double max) {
+//    return min + (max - min) * random_double();
+//}
 
+// use newer c++ features
+inline double random_double() {
+    static random_device rd;
+    static mt19937 generator(rd());
+    static uniform_real_distribution<double> distribution(0.0, 1.0);
+    return distribution(generator);
+}
+
+inline double random_double(double min, double max) {
+    static random_device rd;
+    static mt19937 generator(rd());
+    static uniform_real_distribution<double> distribution(min, max);
+    return distribution(generator);
+}
+
+#include "color.h"
+#include "interval.h"
+#include "ray.h"
+#include "vec3.h"
 
 #endif //GRAPHICA_CONSTANTS_H

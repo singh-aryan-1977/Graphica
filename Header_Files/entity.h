@@ -7,12 +7,15 @@
 #include "ray.h"
 #include "interval.h"
 
+class material;
+
 class entity_record {
 public:
     point3 p;
     vec3 normal;
     double t{};
     bool front_face;
+    shared_ptr<material> materials;
 
     void set_face_normal(const ray& r, const vec3& outward_normal) {
         // Checking if ray is inside object or outisde object

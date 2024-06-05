@@ -16,4 +16,5 @@ add_executable(Graphica
         Header_Files/constants.h
         Header_Files/interval.h
         Header_Files/camera.h
+        Header_Files/material.h
 )

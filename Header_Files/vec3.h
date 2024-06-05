@@ -51,6 +51,15 @@ public:
     double length_squared() const {
         return e[0]*e[0] + e[1]*e[1] + e[2]*e[2];
     }
+
+    static vec3 random_vector(double min, double max) {
+        return vec3(random_double(min, max), random_double(min, max), random_double(min, max));
+    }
+
+    bool is_near_zero() const {
+        auto epsilon = 1e-8;
+        return (fabs(e[0]) < epsilon) && (fabs(e[1]) < epsilon) &&  (fabs(e[2]) < epsilon);
+    }
 };
 
 // point3 is just an alias for vec3, but useful for geometric clarity in the code.
@@ -101,6 +110,42 @@ inline vec3 cross(const vec3 &u, const vec3 &v) {
 
 inline vec3 unit_vector(vec3 v) {
     return v / v.length();
+}
+
+inline vec3 present_in_unit_sphere() {
+    while (true) {
+        auto sampled_vector = vec3::random_vector(-1, 1);
+        if (sampled_vector.length_squared() < 1) {
+            return sampled_vector;
+        }
+    }
+}
+
+inline vec3 normalize_vec_in_unit_sphere() {
+    return unit_vector(present_in_unit_sphere());
+}
+
+inline vec3 check_orientation(const vec3& normal) {
+    vec3 unit_sphere_vector = normalize_vec_in_unit_sphere();
+    if (dot(unit_sphere_vector, normal) > 0.0) {
+        return unit_sphere_vector;
+    } else {
+        return -unit_sphere_vector;
+    }
+}
+
+inline vec3 metal_reflect(const vec3& incidence, const vec3& normal) {
+    return incidence - 2 * dot(incidence, normal) * normal;
+}
+
+// use snell's law
+inline vec3 refract(const vec3& refracted, const vec3& normal, double refractive_ratio) {
+    auto cos = fmin(dot(refracted, normal), 0);
+    vec3 refracted_perpendicular_component =
+            refractive_ratio * (refracted + cos * normal); // R_perp = n/n' * (r + cos (theta) * n)
+    // r_parallel = -sqrt(1-r_perp^2) * n
+    vec3 refracted_parallel_component = -sqrt(fabs(1 - refracted_perpendicular_component.length_squared())) * normal;
+    return refracted_perpendicular_component + refracted_parallel_component;
 }
 
 #endif //GRAPHICA_VEC3_H

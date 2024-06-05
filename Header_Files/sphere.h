@@ -8,7 +8,7 @@
 #include "vec3.h"
 class sphere: public entity {
 public:
-    sphere(point3 _center, double _radius): center(_center), radius(_radius) {}
+    sphere(const point3& _center, double _radius, shared_ptr<material> materials): center(_center), radius(fmax(0, _radius)), materials(materials) {}
 
     bool hit(const ray& r, interval ray_t, entity_record& rec) const override{
         vec3 dist = r.origin()-center;
@@ -34,10 +34,12 @@ public:
         rec.p = r.at(rec.t);
         vec3 outward_normal = (rec.p-center) / radius;
         rec.set_face_normal(r, outward_normal);
+        rec.materials = materials;
         return true;
     }
 private:
     point3 center;
     double radius;
+    shared_ptr<material> materials;
 };
 #endif //GRAPHICA_SPHERE_H
