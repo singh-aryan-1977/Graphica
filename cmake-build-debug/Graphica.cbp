@@ -109,6 +109,9 @@
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/sphere.h">
 			<Option target="Graphica"/>
 		</Unit>
+		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/triangular_prism.h">
+			<Option target="Graphica"/>
+		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/vec3.h">
 			<Option target="Graphica"/>
 		</Unit>

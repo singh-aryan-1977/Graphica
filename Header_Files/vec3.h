@@ -52,6 +52,10 @@ public:
         return e[0]*e[0] + e[1]*e[1] + e[2]*e[2];
     }
 
+    static vec3 random_vector() {
+        return vec3(random_double(0, 1), random_double(0, 1), random_double(0, 1));
+    }
+
     static vec3 random_vector(double min, double max) {
         return vec3(random_double(min, max), random_double(min, max), random_double(min, max));
     }
@@ -64,6 +68,7 @@ public:
 
 // point3 is just an alias for vec3, but useful for geometric clarity in the code.
 using point3 = vec3;
+using color = vec3;
 
 
 // Vector Utility Functions
@@ -140,12 +145,22 @@ inline vec3 metal_reflect(const vec3& incidence, const vec3& normal) {
 
 // use snell's law
 inline vec3 refract(const vec3& refracted, const vec3& normal, double refractive_ratio) {
-    auto cos = fmin(dot(refracted, normal), 0);
+    auto cos = fmin(dot(-refracted, normal), 1.0);
     vec3 refracted_perpendicular_component =
             refractive_ratio * (refracted + cos * normal); // R_perp = n/n' * (r + cos (theta) * n)
     // r_parallel = -sqrt(1-r_perp^2) * n
-    vec3 refracted_parallel_component = -sqrt(fabs(1 - refracted_perpendicular_component.length_squared())) * normal;
+    vec3 refracted_parallel_component = -sqrt(fabs(1.0 - refracted_perpendicular_component.length_squared())) * normal;
     return refracted_perpendicular_component + refracted_parallel_component;
+}
+
+// for defocus blur cone -> Send rays from disk around camera center
+inline vec3 random_in_disk() {
+    while (true) {
+        auto generated = vec3(random_double(-1,1), random_double(-1, 1), 0);
+        if (generated.length_squared() < 1.0) {
+            return generated;
+        }
+    }
 }
 
 #endif //GRAPHICA_VEC3_H

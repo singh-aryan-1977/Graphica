@@ -17,4 +17,5 @@ add_executable(Graphica
         Header_Files/interval.h
         Header_Files/camera.h
         Header_Files/material.h
+        Header_Files/triangular_prism.h
 )
