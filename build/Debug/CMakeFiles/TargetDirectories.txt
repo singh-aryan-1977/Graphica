@@ -1,0 +1,3 @@
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/build/Debug/CMakeFiles/Graphica.dir
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/build/Debug/CMakeFiles/edit_cache.dir
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/build/Debug/CMakeFiles/rebuild_cache.dir
