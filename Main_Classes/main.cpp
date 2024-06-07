@@ -16,6 +16,16 @@
 using namespace std;
 
 int main() {
+
+    if (__cplusplus == 202101L) clog << "C++23";
+    else if (__cplusplus == 202002L) clog << "C++20";
+    else if (__cplusplus == 201703L) clog << "C++17";
+    else if (__cplusplus == 201402L) clog << "C++14";
+    else if (__cplusplus == 201103L) clog << "C++11";
+    else if (__cplusplus == 199711L) clog << "C++98";
+    else clog << "pre-standard C++." << __cplusplus;
+    clog << "\n";
+
     // World building
     entity_list world;
 
@@ -68,7 +78,7 @@ int main() {
     camera cam;
     cam.aspect_ratio = 16.0 / 9.0;
     cam.IMAGE_WIDTH = 1200;
-    cam.NUM_SAMPLES_PER_PIXELS = 10;
+    cam.NUM_SAMPLES_PER_PIXELS = 500;
     cam.MAX_RECURSION_DEPTH = 50;
     cam.VERTICAL_POV = 20;
     cam.POV_OF_SCENE = point3(0,0,0);

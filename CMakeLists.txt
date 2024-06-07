@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.27)
 project(Graphica)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 include_directories(.)
 
@@ -18,4 +18,7 @@ add_executable(Graphica
         Header_Files/camera.h
         Header_Files/material.h
         Header_Files/triangular_prism.h
+        Header_Files/ctpl.h
+        Header_Files/bs_thread_pool.h
+        Header_Files/bs_thread_pool_utils.h
 )

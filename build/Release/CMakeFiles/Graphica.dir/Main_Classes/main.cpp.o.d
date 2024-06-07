@@ -788,4 +788,12 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/./Header_Files/entity.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/./Header_Files/entity_list.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/./Header_Files/camera.h \
-  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/./Header_Files/material.h
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/./Header_Files/material.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/./Header_Files/bs_thread_pool.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/condition_variable \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/future \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/thread \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/queue \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/deque \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/sstream \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/./Header_Files/thread_pool.h

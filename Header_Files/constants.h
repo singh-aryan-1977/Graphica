@@ -10,6 +10,7 @@
 #include <limits>
 #include <memory>
 #include <random>
+#include <time.h>
 
 
 using namespace std;
@@ -21,6 +22,17 @@ const double pi = 3.141592652589793238462643383279;
 // Utility functions
 inline double deg_to_rad(double deg) {
     return (deg * pi) / 180.0;
+}
+
+
+void SeedRng(unsigned int seed)
+{
+    srand(seed);
+}
+
+void SeedRng()
+{
+    SeedRng((unsigned int)time(nullptr));
 }
 
 //inline double random_double() {
