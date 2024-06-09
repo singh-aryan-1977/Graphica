@@ -1,0 +1,64 @@
+#include "Header_Files/color.h"
+#include "Header_Files/vec3.h"
+#include "Header_Files/constants.h"
+#include "Header_Files/sphere.h"
+#include "Header_Files/entity.h"
+#include "Header_Files/entity_list.h"
+#include "Header_Files/ray.h"
+#include "Header_Files/camera.h"
+#include "Header_Files/material.h"
+#include "Header_Files/pyramid.h"
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // World building
+    entity_list world;
+
+    // Ground
+    auto ground_material = make_shared<lambertian>(color(0.5, 0.5, 0.5));
+    world.add(make_shared<sphere>(point3(0, -1000, 0), 1000, ground_material));
+
+    // Define vertices for the first pyramid (lambertian)
+    point3 v0(0, 0, -5);
+    point3 v1(1, 0, -5);
+    point3 v2(1, 0, -6);
+    point3 v3(0, 0, -6);
+    point3 apex(0.5, 1, -5.5);
+
+    // Define vertices for the second pyramid (metal)
+    point3 v4(2, 0, -5);
+    point3 v5(3, 0, -5);
+    point3 v6(3, 0, -6);
+    point3 v7(2, 0, -6);
+    point3 apex2(2.5, 1, -5.5);
+
+    // Materials
+    auto lambertian_material = make_shared<lambertian>(color(0.8, 0.3, 0.3));
+    auto metal_material = make_shared<metal>(color(0.8, 0.8, 0.8), 0.1);
+    auto dielectric_material = make_shared<dielectric>(1.33);
+
+    // Add pyramids to the world
+    world.add(make_shared<pyramid>(v0, v1, v2, v3, apex, lambertian_material));
+//    world.add(make_shared<pyramid>(v4, v5, v6, v7, apex2, metal_material));
+    world.add(make_shared<pyramid>(v4, v5, v6, v7, apex2, metal_material));
+
+    // Camera settings
+    camera cam;
+    cam.aspect_ratio = 16.0 / 9.0;
+    cam.IMAGE_WIDTH = 1200;
+    cam.NUM_SAMPLES_PER_PIXELS = 100;
+    cam.MAX_RECURSION_DEPTH = 50;
+    cam.VERTICAL_POV = 10;
+    cam.POV_OF_SCENE = point3(1.5, 0.5, -5); // Center the camera on the scene
+    cam.POV_OF_CAMERA = point3(-12, 2, 5); // Adjust camera POV position as needed
+    cam.UP = vec3(0, 1, 0);
+    cam.DEFOCUS_ANGLE = 0.05;
+    cam.FOCUS_DISTANCE = 50.0;
+
+    // Render the scene
+    cam.render(world);
+
+    return 0;
+}

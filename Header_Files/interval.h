@@ -38,6 +38,10 @@ public:
         return x;
     }
 
+    interval pad(double x) const {
+        return interval(min-x/2, max+x/2);
+    }
+
     static const interval empty, universe;
 };
 

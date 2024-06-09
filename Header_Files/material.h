@@ -27,7 +27,7 @@ class lambertian: public material {
             if (scattered_direction.is_near_zero()) {
                 scattered_direction = record.normal;
             }
-            scattered = ray(record.p, scattered_direction);
+            scattered = ray(record.p, scattered_direction, incidence.time());
             change = albedo;
             return true;
         }
@@ -44,7 +44,7 @@ public:
     const override {
         vec3 reflected_ray = metal_reflect(incidence.direction(), record.normal);
         reflected_ray = unit_vector(reflected_ray) + (fuzz * normalize_vec_in_unit_sphere());
-        scattered = ray(record.p, reflected_ray);
+        scattered = ray(record.p, reflected_ray, incidence.time());
         change = albedo;
         return (dot(scattered.direction(), record.normal) > 0.0);
     }
@@ -80,7 +80,7 @@ public:
             returned_ray = metal_reflect(unit_vector(incidence.direction()),record.normal);
         }
         change = color(1.0, 1.0, 1.0);
-        scattered = ray(record.p, returned_ray);
+        scattered = ray(record.p, returned_ray, incidence.time());
         return true;
     }
 
