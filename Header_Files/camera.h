@@ -52,7 +52,7 @@ public:
         queue<ThreadInfo> wait_queue;
         vector<vector<array<char, 32>>> buffer(IMAGE_HEIGHT, vector<array<char, 32>>(IMAGE_WIDTH));
         atomic<int> completed(0);
-        const int block_size = 8;
+        const int block_size = 12;
 
         assert(IMAGE_WIDTH % block_size == 0);
 
@@ -65,7 +65,7 @@ public:
         }
 
         // Initialize thread pool
-        ThreadPool pool(number_of_threads);
+        BS::thread_pool pool(number_of_threads);
 
         // Lambda function to process a block
         auto process_block = [this, &world, &buffer, &wait_queue, &completed, &queue_mutex, &output_mutex]() {
@@ -100,7 +100,7 @@ public:
 
         // Push tasks to the thread pool
         for (int i = 0; i < number_of_threads; ++i) {
-            pool.enqueue(process_block);
+            pool.detach_task(process_block);
         }
 
         // Wait for all tasks to complete
@@ -201,7 +201,8 @@ private:
             origin = sample_from_defocus_disk();
         }
         auto dir = pixel_location-origin;
-        return ray(origin, dir);
+        double time = random_double();
+        return ray(origin, dir, time);
     }
 
     point3 sample_from_defocus_disk() const {

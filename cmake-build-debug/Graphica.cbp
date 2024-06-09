@@ -112,13 +112,13 @@
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/material.h">
 			<Option target="Graphica"/>
 		</Unit>
+		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/pyramid.h">
+			<Option target="Graphica"/>
+		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/ray.h">
 			<Option target="Graphica"/>
 		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/sphere.h">
-			<Option target="Graphica"/>
-		</Unit>
-		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/thread_pool.h">
 			<Option target="Graphica"/>
 		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/triangular_prism.h">

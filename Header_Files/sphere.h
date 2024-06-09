@@ -8,10 +8,20 @@
 #include "vec3.h"
 class sphere: public entity {
 public:
-    sphere(const point3& _center, double _radius, shared_ptr<material> materials): center(_center), radius(fmax(0, _radius)), materials(materials) {}
+    sphere(const point3& _center, double _radius, shared_ptr<material> materials): center(_center),
+    radius(fmax(0, _radius)), materials(materials), is_moving(false),
+    center_vector(vec3(0,0,0)) {}
+
+    sphere(const point3& _center, const point3& _new_center, double _radius, shared_ptr<material> materials): center(_center),
+    radius(fmax(0, _radius)), materials(materials), is_moving(true)
+    {
+        center_vector = _new_center - _center;
+    }
 
     bool hit(const ray& r, interval ray_t, entity_record& rec) const override{
-        vec3 dist = r.origin()-center;
+        point3 curr_center = is_moving ? new_center(r.time()) : center;
+        vec3 dist = r.origin()-curr_center;
+//        vec3 dist = curr_center - r.origin();
         auto a = r.direction().length_squared();
         auto half_b = dot(dist, r.direction());
         auto c = dist.length_squared() - (radius*radius);
@@ -41,5 +51,11 @@ private:
     point3 center;
     double radius;
     shared_ptr<material> materials;
+    vec3 center_vector;
+    bool is_moving = false;
+
+    point3 new_center(double time) const {
+        return center + time * center_vector;
+    }
 };
 #endif //GRAPHICA_SPHERE_H

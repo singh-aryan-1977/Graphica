@@ -21,4 +21,5 @@ add_executable(Graphica
         Header_Files/ctpl.h
         Header_Files/bs_thread_pool.h
         Header_Files/bs_thread_pool_utils.h
+        Header_Files/pyramid.h
 )

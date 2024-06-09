@@ -795,6 +795,7 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/entity_list.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/interval.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/material.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/pyramid.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/ray.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/sphere.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/thread_pool.h \
@@ -928,10 +929,6 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_u_int.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/stdlib.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__functional/pointer_to_unary_function.h:
-
-/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/thread_pool.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__concepts/equality_comparable.h:
 
@@ -1383,6 +1380,8 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/is_seed_sequence.h:
 
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/pyramid.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/generate_canonical.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/ranges_find_if_not.h:
@@ -1532,6 +1531,10 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__iterator/bounded_iter.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__iterator/ostreambuf_iterator.h:
+
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/thread_pool.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__functional/pointer_to_unary_function.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_const.h:
 
