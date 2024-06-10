@@ -15,6 +15,11 @@ public:
 
     interval(double min, double max): min(min), max(max) {}
 
+    interval(const interval& a, const interval& b) {
+        min = fmin(a.min, b.min);
+        max = fmax(a.max, b.max);
+    }
+
     double size() const {
         return max - min;
     }
@@ -41,6 +46,9 @@ public:
     interval pad(double x) const {
         return interval(min-x/2, max+x/2);
     }
+
+
+
 
     static const interval empty, universe;
 };

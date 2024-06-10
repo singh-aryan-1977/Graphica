@@ -58,6 +58,14 @@ inline double random_double(double min, double max) {
     return distribution(generator);
 }
 
+inline int random_int() {
+    return int(random_double(0, 2));
+}
+
+inline int random_int(int min, int max) {
+    return int(random_double(min, max+1));
+}
+
 #include "color.h"
 #include "interval.h"
 #include "ray.h"

@@ -4,7 +4,10 @@
 
 #ifndef GRAPHICA_MATERIAL_H
 #define GRAPHICA_MATERIAL_H
+#include <utility>
+
 #include "constants.h"
+#include "texture.h"
 
 class entity_record;
 
@@ -19,7 +22,8 @@ class material {
 
 class lambertian: public material {
     public:
-        lambertian(const color& albedo) : albedo(albedo) {};
+        explicit lambertian(const color& albedo) : textures(make_shared<solid_color>(albedo)) {}
+        explicit lambertian(shared_ptr<texture> textures) : textures(std::move(textures)) {}
 
         bool scatter(const ray& incidence, const entity_record& record, color& change, ray& scattered)
         const override {
@@ -28,12 +32,12 @@ class lambertian: public material {
                 scattered_direction = record.normal;
             }
             scattered = ray(record.p, scattered_direction, incidence.time());
-            change = albedo;
+            change = textures->value(record.u, record.v, record.p);
             return true;
         }
 
     private:
-        color albedo;
+        shared_ptr<texture> textures;
 };
 
 class metal: public material {

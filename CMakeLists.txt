@@ -22,4 +22,10 @@ add_executable(Graphica
         Header_Files/bs_thread_pool.h
         Header_Files/bs_thread_pool_utils.h
         Header_Files/pyramid.h
+        Header_Files/axis_aligned_bounding_box.h
+        Header_Files/bvh.h
+        Header_Files/texture.h
+        Header_Files/stb_image.h
+        Header_Files/rtw_image.h
+        Header_Files/perlin.h
 )

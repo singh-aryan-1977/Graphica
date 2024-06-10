@@ -5,13 +5,16 @@
 #include "Header_Files/entity.h"
 #include "Header_Files/entity_list.h"
 #include "Header_Files/ray.h"
+#include "Header_Files/texture.h"
 #include "Header_Files/camera.h"
 #include "Header_Files/material.h"
 #include "Header_Files/pyramid.h"
+#include "Header_Files/bvh.h"
 #include <iostream>
 
 using namespace std;
-int main() {
+
+void bouncing_spheres() {
     entity_list world;
 
     auto ground_material = make_shared<lambertian>(color(0.5, 0.5, 0.5));
@@ -55,9 +58,11 @@ int main() {
     auto material3 = make_shared<metal>(color(0.7, 0.6, 0.5), 0.0);
     world.add(make_shared<sphere>(point3(4, 1, 0), 1.0, material3));
 
+
+    world = entity_list(make_shared<bvh>(world));
     camera cam;
 
-    cam.aspect_ratio      = 16.0 / 9.0;
+    cam.ASPECT_RATIO      = 16.0 / 9.0;
     cam.IMAGE_WIDTH       = 1200;
     cam.NUM_SAMPLES_PER_PIXELS = 100;
     cam.MAX_RECURSION_DEPTH         = 50;
@@ -71,5 +76,85 @@ int main() {
     cam.FOCUS_DISTANCE    = 10.0;
 
     cam.render(world);
+}
+
+void checkered_spheres() {
+    entity_list world;
+
+    auto checkered = make_shared<checker>(0.32, color(.2, .3, .1), color(.9, .9, .9));
+
+    world.add(make_shared<sphere>(point3(0,-10, 0), 10, make_shared<lambertian>(checkered)));
+    world.add(make_shared<sphere>(point3(0, 10, 0), 10, make_shared<lambertian>(checkered)));
+
+    camera cam;
+
+    cam.ASPECT_RATIO      = 16.0 / 9.0;
+    cam.IMAGE_WIDTH       = 400;
+    cam.NUM_SAMPLES_PER_PIXELS = 100;
+    cam.MAX_RECURSION_DEPTH         = 50;
+
+    cam.VERTICAL_POV     = 20;
+    cam.POV_OF_CAMERA = point3(13,2,3);
+    cam.POV_OF_SCENE   = point3(0,0,0);
+    cam.UP = vec3(0,1,0);
+
+    cam.DEFOCUS_ANGLE = 0;
+
+    cam.render(world);
+}
+
+void earth() {
+    auto earth_texture = make_shared<image_texture>("./image_textures/earthmap.jpg");
+    auto surface = make_shared<lambertian>(earth_texture);
+    auto globe = make_shared<sphere>(point3(0,0,0), 2, surface);
+
+    camera cam;
+
+    cam.ASPECT_RATIO      = 16.0 / 9.0;
+    cam.IMAGE_WIDTH       = 400;
+    cam.NUM_SAMPLES_PER_PIXELS = 100;
+    cam.MAX_RECURSION_DEPTH         = 50;
+
+    cam.VERTICAL_POV     = 20;
+    cam.POV_OF_CAMERA = point3(0,0,12);
+    cam.POV_OF_SCENE   = point3(0,0,0);
+    cam.UP = vec3(0,1,0);
+
+    cam.DEFOCUS_ANGLE = 0;
+
+    cam.render(entity_list(globe));
+}
+
+void perlin_spheres() {
+    entity_list world;
+    auto texture = make_shared<noise_texture>();
+    world.add(make_shared<sphere>(point3(0,-1000,0), 1000, make_shared<lambertian>(texture)));
+    world.add(make_shared<sphere>(point3(0,2,0), 2, make_shared<lambertian>(texture)));
+
+    camera cam;
+
+    cam.ASPECT_RATIO      = 16.0 / 9.0;
+    cam.IMAGE_WIDTH       = 400;
+    cam.NUM_SAMPLES_PER_PIXELS = 10;
+    cam.MAX_RECURSION_DEPTH         = 50;
+
+    cam.VERTICAL_POV     = 20;
+    cam.POV_OF_CAMERA = point3(13,2,3);
+    cam.POV_OF_SCENE   = point3(0,0,0);
+    cam.UP = vec3(0,1,0);
+
+    cam.DEFOCUS_ANGLE = 0;
+
+    cam.render(world);
+}
+int main() {
+
+    switch(4) {
+        case 1: bouncing_spheres(); break;
+        case 2: checkered_spheres(); break;
+        case 3: earth(); break;
+        case 4: perlin_spheres(); break;
+    }
+
 }
 

@@ -6,6 +6,9 @@
 #define GRAPHICA_ENTITY_H
 #include "ray.h"
 #include "interval.h"
+#include "axis_aligned_bounding_box.h"
+
+
 
 class material;
 
@@ -16,6 +19,7 @@ public:
     double t{};
     bool front_face;
     shared_ptr<material> materials;
+    double u,v;
 
     void set_face_normal(const ray& r, const vec3& outward_normal) {
         // Checking if ray is inside object or outisde object
@@ -28,6 +32,8 @@ class entity {
 public:
     virtual ~entity() = default;
     virtual bool hit(const ray& r, interval ray_t, entity_record& rec) const=0;
+    virtual axis_aligned_bounding_box bounding_box() const = 0;
+
 };
 
 #endif //GRAPHICA_ENTITY_H

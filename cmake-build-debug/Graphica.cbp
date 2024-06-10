@@ -82,10 +82,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/axis_aligned_bounding_box.h">
+			<Option target="Graphica"/>
+		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/bs_thread_pool.h">
 			<Option target="Graphica"/>
 		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/bs_thread_pool_utils.h">
+			<Option target="Graphica"/>
+		</Unit>
+		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/bvh.h">
 			<Option target="Graphica"/>
 		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/camera.h">
@@ -112,13 +118,25 @@
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/material.h">
 			<Option target="Graphica"/>
 		</Unit>
+		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/perlin.h">
+			<Option target="Graphica"/>
+		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/pyramid.h">
 			<Option target="Graphica"/>
 		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/ray.h">
 			<Option target="Graphica"/>
 		</Unit>
+		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/rtw_image.h">
+			<Option target="Graphica"/>
+		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/sphere.h">
+			<Option target="Graphica"/>
+		</Unit>
+		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/stb_image.h">
+			<Option target="Graphica"/>
+		</Unit>
+		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/texture.h">
 			<Option target="Graphica"/>
 		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/triangular_prism.h">

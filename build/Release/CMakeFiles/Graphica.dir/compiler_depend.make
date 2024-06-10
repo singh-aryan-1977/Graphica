@@ -787,7 +787,9 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stdarg.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stdint.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/axis_aligned_bounding_box.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/bs_thread_pool.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/bvh.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/camera.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/color.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/constants.h \
@@ -795,14 +797,24 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/entity_list.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/interval.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/material.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/perlin.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/pyramid.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/ray.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/rtw_image.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/sphere.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/stb_image.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/texture.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/thread_pool.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/vec3.h
 
 
 /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/vec3.h:
+
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/stb_image.h:
+
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/sphere.h:
+
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/perlin.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__utility/exchange.h:
 
@@ -811,6 +823,12 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/constants.h:
 
 /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/bs_thread_pool.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/_types.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_trivially_copyable.h:
+
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/axis_aligned_bounding_box.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stddef.h:
 
@@ -821,10 +839,6 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/min_max_result.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/xlocale/_string.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cctype:
-
-/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/ray.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/xlocale/_stdlib.h:
 
@@ -849,8 +863,6 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_useconds_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_uid_t.h:
-
-/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/sphere.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_symbol_aliasing.h:
 
@@ -1067,6 +1079,10 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__chrono/time_point.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cerrno:
+
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/ray.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cctype:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__functional/binary_negate.h:
 
@@ -1486,6 +1502,8 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__memory/allocator_traits.h:
 
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/bvh.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/ranges_equal_range.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/void_t.h:
@@ -1664,6 +1682,8 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/wait.h:
 
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/texture.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/remove_const.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__concepts/regular.h:
@@ -1673,6 +1693,8 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/nth_element.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__concepts/movable.h:
+
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/rtw_image.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__memory/auto_ptr.h:
 
@@ -2135,10 +2157,6 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/partition_point.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/errno.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/_types.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_trivially_copyable.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/ranges_any_of.h:
 

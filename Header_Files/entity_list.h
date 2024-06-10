@@ -7,6 +7,8 @@
 #include <vector>
 #include <memory>
 #include "entity.h"
+#include "axis_aligned_bounding_box.h"
+
 using namespace std;
 class entity_list : public entity {
 public:
@@ -19,6 +21,11 @@ public:
 
     void add(shared_ptr<entity> object) {
         objects.push_back(object);
+        bbox = axis_aligned_bounding_box(bbox, object->bounding_box());
+    }
+
+    [[nodiscard]] axis_aligned_bounding_box bounding_box() const override {
+        return bbox;
     }
 
     bool hit(const ray& r, interval ray_t, entity_record& record) const override {
@@ -37,7 +44,8 @@ public:
          return hit_anything;
     }
 
-
+private:
+    axis_aligned_bounding_box bbox;
 };
 
 #endif //GRAPHICA_ENTITY_LIST_H

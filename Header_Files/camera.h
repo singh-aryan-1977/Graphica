@@ -21,7 +21,7 @@
 
 class camera {
 public:
-    double aspect_ratio = 16.0/9.0;
+    double ASPECT_RATIO = 16.0/9.0;
     int IMAGE_WIDTH = 400;
     int NUM_SAMPLES_PER_PIXELS = 15;
     int MAX_RECURSION_DEPTH = 10;
@@ -52,7 +52,7 @@ public:
         queue<ThreadInfo> wait_queue;
         vector<vector<array<char, 32>>> buffer(IMAGE_HEIGHT, vector<array<char, 32>>(IMAGE_WIDTH));
         atomic<int> completed(0);
-        const int block_size = 12;
+        const int block_size = 10;
 
         assert(IMAGE_WIDTH % block_size == 0);
 
@@ -132,7 +132,7 @@ private:
     vec3 disk_vr; // vertical radius for defocus disk
 
     void initialize() {
-        IMAGE_HEIGHT = static_cast<int>(IMAGE_WIDTH / aspect_ratio);
+        IMAGE_HEIGHT = static_cast<int>(IMAGE_WIDTH / ASPECT_RATIO);
         IMAGE_HEIGHT = (IMAGE_HEIGHT < 1) ? 1 : IMAGE_HEIGHT;
 
         // setting sample scale for anti-aliasing
