@@ -799,13 +799,15 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/material.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/perlin.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/pyramid.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/quadrilateral.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/ray.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/rtw_image.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/sphere.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/stb_image.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/texture.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/thread_pool.h \
-  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/vec3.h
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/vec3.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/volumes.h
 
 
 /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/vec3.h:
@@ -873,6 +875,8 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/in_in_result.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_u_short.h:
+
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/volumes.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_uintptr_t.h:
 
@@ -1399,6 +1403,8 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/pyramid.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/generate_canonical.h:
+
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/quadrilateral.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/ranges_find_if_not.h:
 

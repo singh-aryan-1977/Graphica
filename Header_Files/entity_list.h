@@ -4,6 +4,7 @@
 
 #ifndef GRAPHICA_ENTITY_LIST_H
 #define GRAPHICA_ENTITY_LIST_H
+#include <utility>
 #include <vector>
 #include <memory>
 #include "entity.h"
@@ -14,12 +15,12 @@ class entity_list : public entity {
 public:
     vector<shared_ptr<entity>> objects;
 
-    entity_list() {}
-    entity_list(shared_ptr<entity> object) { add(object);}
+    entity_list() = default;
+    explicit entity_list(shared_ptr<entity> object) { add(std::move(object));}
 
     void clear() { objects.clear(); }
 
-    void add(shared_ptr<entity> object) {
+    void add(const shared_ptr<entity>& object) {
         objects.push_back(object);
         bbox = axis_aligned_bounding_box(bbox, object->bounding_box());
     }

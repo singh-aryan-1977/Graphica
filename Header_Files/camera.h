@@ -32,6 +32,7 @@ public:
     vec3 UP = vec3(0,1,0); // up direction relative to camera
     double DEFOCUS_ANGLE = 0;
     double FOCUS_DISTANCE = 10; // distance from camera to perfect focus
+    color BACKGROUND;
 
     struct ThreadInfo {
         int start_col;
@@ -81,9 +82,12 @@ public:
                 for (int row = curr_ti.start_row; row < curr_ti.end_row; row++) {
                     for (int col = curr_ti.start_col; col < curr_ti.end_col; col++) {
                         color pixel_color(0, 0, 0);
-                        for (int s = 0; s < NUM_SAMPLES_PER_PIXELS; s++) {
-                            ray r = get_ray(col, row);
-                            pixel_color += ray_color(r, world, MAX_RECURSION_DEPTH);
+                        // stratified sampling (sub divide region into smaller sub squares)
+                        for (int s_i = 0; s_i < square_root_sample_pixels; s_i++) {
+                            for (int s_j = 0; s_j < square_root_sample_pixels; s_j++) {
+                                ray r = get_ray(col, row, s_i, s_j);
+                                pixel_color += ray_color(r, world, MAX_RECURSION_DEPTH);
+                            }
                         }
                         string pixel_str = format_color(pixel_color * sample_scale);
                         copy(pixel_str.begin(), pixel_str.end(), buffer[row][col].begin());
@@ -130,13 +134,17 @@ private:
     vec3 u, v, w; // basis vectors for camera plane
     vec3 disk_hr; // horizontal radius for defocus disk
     vec3 disk_vr; // vertical radius for defocus disk
+    int square_root_sample_pixels;
+    double inverse_square_root_sample_pixels;
 
     void initialize() {
         IMAGE_HEIGHT = static_cast<int>(IMAGE_WIDTH / ASPECT_RATIO);
         IMAGE_HEIGHT = (IMAGE_HEIGHT < 1) ? 1 : IMAGE_HEIGHT;
 
         // setting sample scale for anti-aliasing
-        sample_scale = 1.0 / NUM_SAMPLES_PER_PIXELS;
+        square_root_sample_pixels = int(sqrt(NUM_SAMPLES_PER_PIXELS));
+        inverse_square_root_sample_pixels = 1.0 / square_root_sample_pixels;
+        sample_scale = 1.0 / square_root_sample_pixels*square_root_sample_pixels;
 
         // setting camera and viewport dimensions
         auto h = tan(deg_to_rad(VERTICAL_POV) / 2);
@@ -167,21 +175,29 @@ private:
     }
 
     color ray_color(const ray& r, const entity& world, int curr_depth) const {
+//        clog << "Entered ray color \n";
         if (curr_depth <= 0) {
+//            clog << "Exit ray color through max depth \n";
             return color(0,0,0);
         }
         entity_record record;
-        if (world.hit(r, interval(0.00001, inf), record)) {
+        if (world.hit(r, interval(0.001, inf), record)) {
             ray scattered;
             color change;
-            if (record.materials->scatter(r, record, change, scattered)) {
-                return change * ray_color(scattered, world, curr_depth - 1);
+            color emitted_color = record.materials->emit(record.u, record.v, record.p);
+            if (!record.materials->scatter(r, record, change, scattered)) {
+//                clog << "Exited ray color with no scatter \n";
+                return emitted_color;
             }
-            return color(0,0,0);
+//            clog << "Exited ray color through recursio\n";
+            color scattered_color = change * ray_color(scattered, world, curr_depth-1);
+            return scattered_color + emitted_color;
         }
-        vec3 unit_dir = unit_vector(r.direction());
-        auto a = 0.5*(unit_dir.y()+1.0);
-        return (1.0-a)*color(1.0, 1.0, 1.0) + a*color(0.5,0.7,1.0);
+//        vec3 unit_dir = unit_vector(r.direction());
+//        auto a = 0.5*(unit_dir.y()+1.0);
+//        clog << "Exited ray color through no hit \n";
+//        return (1.0-a)*color(1.0, 1.0, 1.0) + a*color(0.5,0.7,1.0);
+        return BACKGROUND;
     }
 
     static vec3 sample_for_antialiasing() {
@@ -190,8 +206,10 @@ private:
 
     // Function for generating origin camera ray from defocus disk and pointing towards random points in square around pixel
     // used for anti-aliasing
-    ray get_ray(int col, int row) const {
-        auto offset_square = sample_for_antialiasing();
+    ray get_ray(int col, int row, int s_i, int s_j) const {
+
+//        auto offset_square = sample_for_antialiasing();
+        auto offset_square = sample_in_stratified_square(s_i, s_j);
         auto pixel_location = pixel_0_loc + ((col + offset_square.x()) * pixel_delta_u) + ((row + offset_square.y()) * pixel_delta_v);
 
         point3 origin;
@@ -210,6 +228,12 @@ private:
         return camera_center + (random_p[0] * disk_hr) + (random_p[1] * disk_vr);
     }
 
+    // APMA1720 coming in clutch
+    vec3 sample_in_stratified_square(int s_i, int s_j) const {
+        auto px = ((s_i + random_double()) * inverse_square_root_sample_pixels) - 0.5;
+        auto py = ((s_j + random_double()) * inverse_square_root_sample_pixels) - 0.5;
+        return vec3(px, py, 0);
+    }
     static vec3 random_in_disk() {
         while (true) {
             auto p = vec3(random_double(-1,1), random_double(-1,1), 0);

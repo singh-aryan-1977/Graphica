@@ -53,7 +53,7 @@ public:
     }
 
     static vec3 random_vector() {
-        return vec3(random_double(0, 1), random_double(0, 1), random_double(0, 1));
+        return vec3(random_double(), random_double(), random_double());
     }
 
     static vec3 random_vector(double min, double max) {
@@ -118,15 +118,19 @@ inline vec3 unit_vector(vec3 v) {
 }
 
 inline vec3 present_in_unit_sphere() {
+//    clog << "Reached inside present in unit sphere \n";
     while (true) {
         auto sampled_vector = vec3::random_vector(-1, 1);
+//        clog << sampled_vector.length_squared() << "\n";
         if (sampled_vector.length_squared() < 1) {
+//            clog << "Exited inside present in unit sphere \n";
             return sampled_vector;
         }
     }
 }
 
 inline vec3 normalize_vec_in_unit_sphere() {
+//    clog << "Reached inside unit sphere \n";
     return unit_vector(present_in_unit_sphere());
 }
 

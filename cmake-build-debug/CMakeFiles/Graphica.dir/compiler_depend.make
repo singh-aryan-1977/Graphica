@@ -799,13 +799,15 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/material.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/perlin.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/pyramid.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/quadrilateral.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/ray.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/rtw_image.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/sphere.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/stb_image.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/texture.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/thread_pool.h \
-  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/vec3.h
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/vec3.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/volumes.h
 
 
 /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/vec3.h:
@@ -817,6 +819,8 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/rtw_image.h:
 
 /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/ray.h:
+
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/quadrilateral.h:
 
 /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/pyramid.h:
 
@@ -1049,6 +1053,8 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: /Users/aryan_singh/Desktop/Pers
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_fd_def.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/ratio:
+
+/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/volumes.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/numeric:
 

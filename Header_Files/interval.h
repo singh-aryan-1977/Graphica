@@ -43,7 +43,7 @@ public:
         return x;
     }
 
-    interval pad(double x) const {
+    [[nodiscard]] interval pad(double x) const {
         return interval(min-x/2, max+x/2);
     }
 
@@ -55,5 +55,15 @@ public:
 
 const interval interval::empty = interval();
 const interval interval::universe = interval(-inf, inf);
+
+interval operator+(const interval& inter, double value) {
+    return interval(inter.min+value, inter.max+value);
+}
+
+interval operator+(double value, const interval& inter) {
+    return inter+value;
+}
+
+
 
 #endif //GRAPHICA_INTERVAL_H

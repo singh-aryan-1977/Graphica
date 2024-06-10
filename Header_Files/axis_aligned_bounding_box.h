@@ -13,7 +13,9 @@ public:
 
     axis_aligned_bounding_box() {};
 
-    axis_aligned_bounding_box(const interval& x, const interval& y, const interval &z): x(x), y(y), z(z) {}
+    axis_aligned_bounding_box(const interval& x, const interval& y, const interval &z): x(x), y(y), z(z) {
+        pad_to_min();
+    }
 
     // apparently fmin and fmax are slower than simple conditional???
     // https://stackoverflow.com/questions/76387817/fmin-and-fmax-are-much-slower-than-simple-conditional-operator
@@ -21,6 +23,7 @@ public:
         x = (a[0] <= b[0]) ? interval(a[0], b[0]) : interval(b[0], a[0]);
         y = (a[1] <= b[1]) ? interval(a[1], b[1]) : interval(b[1], a[1]);
         z = (a[2] <= b[2]) ? interval(a[2], b[2]) : interval(b[2], a[2]);
+        pad_to_min();
     }
 
     axis_aligned_bounding_box(const axis_aligned_bounding_box& box1, const axis_aligned_bounding_box& box2) {
@@ -90,8 +93,28 @@ public:
     }
 
     static const axis_aligned_bounding_box empty, universe;
+private:
+    void pad_to_min() {
+        double epsilon = 0.0001;
+        if (x.size() < epsilon) {
+            x = x.pad(epsilon);
+        }
+        if (y.size() < epsilon) {
+            y = y.pad(epsilon);
+        }
+        if (z.size() < epsilon) {
+            z = z.pad(epsilon);
+        }
+    }
 };
 
 const axis_aligned_bounding_box axis_aligned_bounding_box::empty = axis_aligned_bounding_box(interval::empty, interval::empty, interval::empty);
 const axis_aligned_bounding_box axis_aligned_bounding_box::universe = axis_aligned_bounding_box(interval::universe, interval::universe, interval::universe);
+
+axis_aligned_bounding_box operator+(const axis_aligned_bounding_box& box, const vec3& offset) {
+    return axis_aligned_bounding_box(box.x + offset.x(), box.y + offset.y(), box.z + offset.z());
+}
+axis_aligned_bounding_box operator+(const vec3& offset, const axis_aligned_bounding_box& box) {
+    return box + offset;
+}
 #endif //GRAPHICA_AXIS_ALIGNED_BOUNDING_BOX_H

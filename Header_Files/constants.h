@@ -21,7 +21,7 @@ const double pi = 3.141592652589793238462643383279;
 
 // Utility functions
 inline double deg_to_rad(double deg) {
-    return (deg * pi) / 180.0;
+    return deg * pi / 180.0;
 }
 
 
@@ -35,27 +35,40 @@ void SeedRng()
     SeedRng((unsigned int)time(nullptr));
 }
 
-//inline double random_double() {
-//    return rand() / (RAND_MAX + 1.0);
-//}
+inline double random_double() {
+    return rand() / (RAND_MAX + 1.0);
+}
 //
 //inline double random_double(double min, double max) {
 //    return min + (max - min) * random_double();
 //}
 
 // use newer c++ features
-inline double random_double() {
-    static random_device rd;
-    static mt19937 generator(rd());
-    static uniform_real_distribution<double> distribution(0.0, 1.0);
-    return distribution(generator);
-}
+//inline double random_double() {
+//    static random_device rd;
+//    static mt19937 generator(rd());
+//    static uniform_real_distribution<double> distribution(0.0, 1.0);
+//    return distribution(generator);
+//}
+
+//inline double random_double(double min, double max) {
+//    static std::uniform_real_distribution<double> distribution(min, max);
+//    static std::mt19937 generator;
+//    return distribution(generator);
+//}
+
+// check why this causes infinite loop when gene4rating vector inside unit sphere
+
+//inline double random_double(double min, double max) {
+//    static random_device rd;
+//    static mt19937 generator(rd());
+//    static uniform_real_distribution<double> distribution(min, max);
+//    return distribution(generator);
+//}
 
 inline double random_double(double min, double max) {
-    static random_device rd;
-    static mt19937 generator(rd());
-    static uniform_real_distribution<double> distribution(min, max);
-    return distribution(generator);
+    // Returns a random real in [min,max).
+    return min + (max-min)*random_double();
 }
 
 inline int random_int() {

@@ -10,9 +10,9 @@
 class perlin {
 public:
     perlin() {
-        randfloat = new double[num_of_points];
+        randvec = new vec3[num_of_points];
         for (int i = 0; i < num_of_points; i++) {
-            randfloat[i] = random_double();
+            randvec[i] = unit_vector(vec3::random_vector());
         }
         perm_x = generate_permutation();
         perm_y = generate_permutation();
@@ -20,7 +20,7 @@ public:
     }
 
     ~perlin() {
-        delete[] randfloat;
+        delete[] randvec;
         delete[] perm_x;
         delete[] perm_y;
         delete[] perm_z;
@@ -33,16 +33,18 @@ public:
         auto w = p.z() - floor(p.z());
 
         auto i = int(floor(p.x()));
-        auto j = int(floor(p.x()));
+        auto j = int(floor(p.y()));
         auto k = int(floor(p.z()));
-        double c[2][2][2];
+        vec3 c[2][2][2];
 
         for (int di = 0; di < 2; di++) {
             for (int dj = 0; dj < 2; dj++) {
                 for (int dk = 0; dk < 2; dk++) {
-                    c[di][dj][dk] = randfloat[perm_x[(di+i) & 255]
-                                              ^ perm_y[(dj+j) & 255]
-                                              ^ perm_z[(dk+k) & 255]]; // can also do mod 256 but bitwise is faster
+                    c[di][dj][dk] = randvec[
+                            perm_x[(di+i) & 255]
+                            ^ perm_y[(dj+j) & 255]
+                            ^ perm_z[(dk+k) & 255]
+                            ]; // can also do mod 256 but bitwise is faster
                 }
             }
         }
@@ -50,9 +52,22 @@ public:
         return trilinear_interpolate(c, u, v, w); // for smoothness
     }
 
+    double turbulence(const point3& p, int iterations) const {
+        auto sum = 0.0;
+        auto tmp = p;
+        auto weight = 1.0;
+        for (int i = 0; i < iterations; i++) {
+            sum += weight * noise(tmp);
+            weight *= 0.5;
+            tmp *= 2;
+        }
+        return fabs(sum);
+    }
+
 private:
     static const int num_of_points = 256;
-    double* randfloat;
+//    double* randfloat;
+    vec3* randvec;
     int* perm_x;
     int* perm_y;
     int* perm_z;
@@ -77,15 +92,20 @@ private:
 //        clog << "Reached here 2 \n";
     }
 
-    static double trilinear_interpolate(double c[2][2][2], double u, double v, double w) {
+    static double trilinear_interpolate(vec3 c[2][2][2], double u, double v, double w) {
+
+        auto new_u = u*u*(3-2*u);
+        auto new_v = v*v*(3-2*v);
+        auto new_w = w*w*(3-2*w);
         auto sum = 0.0;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
                 for (int k = 0; k < 2; k++) {
-                    sum += c[i][j][k] *
-                            (i * u + (1-i) * (1-u)) *
-                            (j * v + (1-j) * (1-v)) *
-                            (k * w + (1-k) * (1-w));
+                    vec3 weight_vector(u-i, v-j, w-k);
+                    sum += dot(c[i][j][k], weight_vector) *
+                            (i * new_u + (1-i) * (1-new_u)) *
+                            (j * new_v + (1-j) * (1-new_v)) *
+                            (k * new_w + (1-k) * (1-new_w));
                 }
             }
         }

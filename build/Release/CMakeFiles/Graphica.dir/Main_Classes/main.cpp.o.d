@@ -803,4 +803,6 @@ CMakeFiles/Graphica.dir/Main_Classes/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/sstream \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/./Header_Files/thread_pool.h \
   /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/./Header_Files/pyramid.h \
-  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/./Header_Files/bvh.h
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/./Header_Files/volumes.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/./Header_Files/bvh.h \
+  /Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/./Header_Files/quadrilateral.h

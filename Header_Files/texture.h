@@ -31,7 +31,7 @@ private:
 class checker: public texture {
 public:
     checker(double scale, shared_ptr<texture> even, shared_ptr<texture> odd) :
-    inv_scale(1.0/scale), even(std::move(even)), odd(std::move(odd)) {}
+    inv_scale(1.0/scale), even(even), odd(odd) {}
 
     checker(double scale, const color& c1, const color& c2) :
     inv_scale(1.0/scale), even(make_shared<solid_color>(c1)), odd(make_shared<solid_color>(c2)) {}
@@ -82,11 +82,14 @@ class noise_texture: public texture {
 public:
     noise_texture() {}
 
+    noise_texture(double scale) : scale(scale) {}
+
     color value(double u, double v, const point3& p) const override {
-        return color(1, 1, 1) * noise.noise(p);
+        return color(0.5, 0.5, 0.5) * (sin(noise.turbulence(p, 7) * 10 + scale * p.z()) + 1);
     }
 private:
     perlin noise;
+    double scale;
 };
 
 #endif //GRAPHICA_TEXTURE_H

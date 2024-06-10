@@ -9,8 +9,7 @@
 class sphere: public entity {
 public:
     sphere(const point3& _center, double _radius, shared_ptr<material> materials): center(_center),
-    radius(fmax(0, _radius)), materials(materials), is_moving(false),
-    center_vector(vec3(0,0,0))
+    radius(fmax(0, _radius)), materials(materials), is_moving(false)
     {
         auto radius_vector = vec3(radius, radius, radius);
         bbox = axis_aligned_bounding_box(center - radius_vector, center + radius_vector);
@@ -27,7 +26,7 @@ public:
 
     }
 
-    axis_aligned_bounding_box bounding_box() const override {return bbox;}
+    [[nodiscard]] axis_aligned_bounding_box bounding_box() const override {return bbox;}
 
     bool hit(const ray& r, interval ray_t, entity_record& rec) const override{
         point3 curr_center = is_moving ? new_center(r.time()) : center;

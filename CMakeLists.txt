@@ -28,4 +28,6 @@ add_executable(Graphica
         Header_Files/stb_image.h
         Header_Files/rtw_image.h
         Header_Files/perlin.h
+        Header_Files/quadrilateral.h
+        Header_Files/volumes.h
 )

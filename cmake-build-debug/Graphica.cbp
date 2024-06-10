@@ -124,6 +124,9 @@
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/pyramid.h">
 			<Option target="Graphica"/>
 		</Unit>
+		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/quadrilateral.h">
+			<Option target="Graphica"/>
+		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/ray.h">
 			<Option target="Graphica"/>
 		</Unit>
@@ -143,6 +146,9 @@
 			<Option target="Graphica"/>
 		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/vec3.h">
+			<Option target="Graphica"/>
+		</Unit>
+		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/volumes.h">
 			<Option target="Graphica"/>
 		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Main_Classes/main.cpp">
