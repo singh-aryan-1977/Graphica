@@ -26,6 +26,16 @@ void write_color(std::ostream &out, color pixel_color) {
     auto green_component = pixel_color.y();
     auto blue_component = pixel_color.z();
 
+    // for NaN
+    if (red_component != red_component) {
+        red_component = 0.0;
+    }
+    if (green_component != green_component) {
+        green_component = 0.0;
+    }
+    if (blue_component != blue_component) {
+        blue_component = 0.0;
+    }
     // convert to gamma
     red_component = linear_space_to_gamma_space(red_component);
     green_component = linear_space_to_gamma_space(green_component);

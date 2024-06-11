@@ -45,6 +45,20 @@ public:
          return hit_anything;
     }
 
+    double pdf_value(const point3& origin, const vec3& direction) const override {
+        auto weight = 1.0/objects.size();
+        double sum = 0.0;
+        for (const auto& object: objects) {
+            sum += weight*object->pdf_value(origin, direction);
+        }
+        return sum;
+    }
+
+    vec3 random(const point3& origin) const override {
+        auto sz = int(objects.size()); // can this ever not be an int????
+        return objects[random_int(0, sz-1)]->random(origin);
+    }
+
 private:
     axis_aligned_bounding_box bbox;
 };

@@ -6,6 +6,7 @@
 #define GRAPHICA_SPHERE_H
 #include "entity.h"
 #include "vec3.h"
+#include "onb.h"
 class sphere: public entity {
 public:
     sphere(const point3& _center, double _radius, shared_ptr<material> materials): center(_center),
@@ -30,7 +31,7 @@ public:
 
     bool hit(const ray& r, interval ray_t, entity_record& rec) const override{
         point3 curr_center = is_moving ? new_center(r.time()) : center;
-        vec3 dist = r.origin()-curr_center;
+        vec3 dist = r.origin()-curr_center; // check this
 //        vec3 dist = curr_center - r.origin();
         auto a = r.direction().length_squared();
         auto half_b = dot(dist, r.direction());
@@ -58,6 +59,27 @@ public:
         rec.materials = materials;
         return true;
     }
+
+    double pdf_value(const point3& origin, const vec3& direction) const override {
+        // need to fix for moving spheres
+        entity_record rec;
+        auto epsilon = 0.001;
+        if (!this->hit(ray(origin, direction), interval(epsilon, inf), rec)) {
+            return 0.0;
+        }
+
+        auto theta_max = sqrt(1-radius*radius/(center-origin).length_squared());
+        auto solid_angle = 2*pi*(1-theta_max);
+        return 1/solid_angle;
+    }
+
+    vec3 random(const point3& origin) const override {
+        vec3 dir = center-origin;
+        auto dist_squared = dir.length_squared();
+        onb coordinate_system;
+        coordinate_system.build(dir);
+        return coordinate_system.local(random_to_sphere(radius, dist_squared));
+    }
 private:
     point3 center;
     double radius;
@@ -81,6 +103,16 @@ private:
 
         u = phi / (2*pi);
         v = theta/pi;
+    }
+
+    static vec3 random_to_sphere(double radius, double dist_squared) {
+        auto r1 = random_double();
+        auto r2 = random_double();
+        auto z = 1 + r2*(sqrt(1-radius*radius/dist_squared)-1);
+        auto phi = 2*pi*r1;
+        auto x = cos(phi)*sqrt(1-z*z);
+        auto y = sin(phi)*sqrt(1-z*z);
+        return vec3(x,y,z);
     }
 };
 #endif //GRAPHICA_SPHERE_H

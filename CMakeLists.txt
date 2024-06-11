@@ -30,4 +30,6 @@ add_executable(Graphica
         Header_Files/perlin.h
         Header_Files/quadrilateral.h
         Header_Files/volumes.h
+        Header_Files/onb.h
+        Header_Files/pdf.h
 )

@@ -167,4 +167,14 @@ inline vec3 random_in_disk() {
     }
 }
 
+inline vec3 random_cos_direction() {
+    auto r1 = random_double();
+    auto r2 = random_double();
+    auto phi = 2*pi*r1;
+    auto x = sqrt(r2) * cos(phi);
+    auto y = sqrt(r2) * sin(phi);
+    auto z = sqrt(1-r2);
+    return vec3(x,y,z);
+}
+
 #endif //GRAPHICA_VEC3_H

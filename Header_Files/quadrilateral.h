@@ -19,6 +19,7 @@ public:
         D = dot(normal, q); // for plane equation for quadrilateral (Ax+By+Cz = D)
         initialize();
         w = cross(u, v) / dot(cross(u, v), cross(u, v));
+        area = cross(u, v).length();
     }
 
     virtual void set_bounding_box() {
@@ -72,6 +73,23 @@ public:
         record.v = beta;
         return true;
     }
+
+    double pdf_value(const point3& origin, const point3& direction) const override {
+        entity_record record;
+        auto epsilon = 0.001;
+        if (!this->hit(ray(origin, direction), interval(epsilon, inf), record)) {
+            return 0.0;
+        }
+
+        auto dist_squared = record.t * record.t * direction.length_squared();
+        auto cos_theta = fabs(dot(direction, record.normal) / direction.length());
+        return dist_squared / (cos_theta * area);
+    }
+
+     vec3 random(const point3& origin) const override {
+        auto p = q + (random_double() * u) + (random_double() * v);
+        return p-origin;
+    }
 private:
     point3 q;
     vec3 u,v;
@@ -80,6 +98,7 @@ private:
     double D;
     vec3 normal;
     vec3 w;
+    double area;
 
     void initialize() {
         set_bounding_box();

@@ -12,41 +12,41 @@
 class entity_record;
 
 class material {
-    public:
-        virtual ~material() = default;
+public:
+    virtual ~material() = default;
 
-        virtual bool scatter(const ray& incidence, const entity_record& record, color& change, ray& scattered) const {
-            return false;
-        }
+    virtual bool scatter(const ray& incidence, const entity_record& record, color& change, ray& scattered) const {
+        return false;
+    }
 
-        virtual color emit(double u, double v, const point3& p) const {
-            return color(0,0,0);
-        }
+    virtual color emit(double u, double v, const point3& p) const {
+        return color(0,0,0);
+    }
 };
 
 class lambertian: public material {
-    public:
-        explicit lambertian(const color& albedo) : textures(make_shared<solid_color>(albedo)) {}
-        explicit lambertian(shared_ptr<texture> textures) : textures(textures) {}
+public:
+    explicit lambertian(const color& albedo) : textures(make_shared<solid_color>(albedo)) {}
+    explicit lambertian(shared_ptr<texture> textures) : textures(textures) {}
 
-        bool scatter(const ray& incidence, const entity_record& record, color& change, ray& scattered)
-        const override {
+    bool scatter(const ray& incidence, const entity_record& record, color& change, ray& scattered)
+    const override {
 //            clog << "Reached scatter \n";
-            auto scattered_direction = record.normal + normalize_vec_in_unit_sphere();
+        auto scattered_direction = record.normal + normalize_vec_in_unit_sphere();
 //            clog << "Reached scatter 2 \n";
-            if (scattered_direction.is_near_zero()) {
-                scattered_direction = record.normal;
-            }
-//            clog << "Reached scatter 3 \n";
-            scattered = ray(record.p, scattered_direction, incidence.time());
-//            clog << "Reached scatter 4 \n";
-            change = textures->value(record.u, record.v, record.p);
-//            clog << "Exited scatter \n";
-            return true;
+        if (scattered_direction.is_near_zero()) {
+            scattered_direction = record.normal;
         }
+//            clog << "Reached scatter 3 \n";
+        scattered = ray(record.p, scattered_direction, incidence.time());
+//            clog << "Reached scatter 4 \n";
+        change = textures->value(record.u, record.v, record.p);
+//            clog << "Exited scatter \n";
+        return true;
+    }
 
-    private:
-        shared_ptr<texture> textures;
+private:
+    shared_ptr<texture> textures;
 };
 
 class metal: public material {

@@ -34,6 +34,14 @@ public:
     virtual bool hit(const ray& r, interval ray_t, entity_record& rec) const=0;
     [[nodiscard]] virtual axis_aligned_bounding_box bounding_box() const = 0;
 
+    virtual double pdf_value(const point3& origin, const point3& direction) const {
+        return 0.0;
+    }
+
+    virtual vec3 random(const point3& origin) const {
+        return vec3(1,0,0);
+    }
+
 };
 
 // move ray back by offset, check intersection, move ray towards offset again
