@@ -1,3 +1,0 @@
-Single_thread runtime for 500 samples per pixel: 2150726 milliseconds
-Multi-thread runtime for 500 samples per pixel using my ThreadPool: 1035290 milliseconds
-Multi-thread runtime for 500 samples per pixel using BS_ThreadPool: 754064 milliseconds

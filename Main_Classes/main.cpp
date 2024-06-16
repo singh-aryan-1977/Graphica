@@ -434,7 +434,7 @@ void cornell_stratified() {
 }
 int main() {
 
-    switch(2) {
+    switch(7) {
         case 1: bouncing_spheres(); break;
         case 2: checkered_spheres(); break;
         case 3: earth(); break;
@@ -445,7 +445,7 @@ int main() {
         case 8: cornell_smoke(); break;
         case 9: final_scene(800, 10000, 40); break;
         default:
-            final_scene(400, 250, 4); break;
+            final_scene(800, 500, 4); break;
     }
 
 }

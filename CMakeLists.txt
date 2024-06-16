@@ -18,7 +18,6 @@ add_executable(Graphica
         Header_Files/camera.h
         Header_Files/material.h
         Header_Files/triangular_prism.h
-        Header_Files/ctpl.h
         Header_Files/bs_thread_pool.h
         Header_Files/bs_thread_pool_utils.h
         Header_Files/pyramid.h
@@ -30,4 +29,6 @@ add_executable(Graphica
         Header_Files/perlin.h
         Header_Files/quadrilateral.h
         Header_Files/volumes.h
+        Header_Files/onb.h
+        Header_Files/ThreadPool.h
 )

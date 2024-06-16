@@ -82,6 +82,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/ThreadPool.h">
+			<Option target="Graphica"/>
+		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/axis_aligned_bounding_box.h">
 			<Option target="Graphica"/>
 		</Unit>
@@ -116,6 +119,9 @@
 			<Option target="Graphica"/>
 		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/material.h">
+			<Option target="Graphica"/>
+		</Unit>
+		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/onb.h">
 			<Option target="Graphica"/>
 		</Unit>
 		<Unit filename="/Users/aryan_singh/Desktop/Personal_Projects/Graphica/Graphica/Header_Files/perlin.h">

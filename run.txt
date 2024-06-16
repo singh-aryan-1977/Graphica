@@ -1,4 +1,0 @@
-How to run:
-cmake -B build/Release -DCMAKE_BUILD_TYPE=Release
-cmake --build build/Release
-build/Release/Graphica > image.ppm (can rename this to whatever you want)
